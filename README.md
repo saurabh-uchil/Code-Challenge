@@ -5,13 +5,16 @@ Build a React + Node.js application that renders a customer's energy accounts an
 ### 💡 Our guidance
 - You may choose whichever technology stack and libraries you are comfortable with.
 - This challenge covers both backend and frontend but **feel free to only focus on the area you are more comfortable with**.
-    - If you only wish to showcase the frontend then feel free to use mocks to simulate the backend calls.
-    - If you wish only wish to showcase the backend then please provide tests or swagger documentation to simulate its use.
-- We believe a modern developer workflow should make use of the best tools available so feel free to use AI tools but be prepared to discuss the end solution and be familiar with the entire codebase.
-- We value your time and as such we will pay attention to code quality and design decisions not completeness of the exercise.  This challenge is to serve as a basis to have a further conversation. We recommend you spend no more than 4 hours on this challenge. Feel free to add comments instead of implementation where you feel there would be room for future improvement or you ran out of time.
-- Typescript is essential within our platform and will make your code much more robust and as such we would encourage you to leverage and showcase your typescript knowledge.
-- Please ensure your code compiles, and include instructions for running it. Ideally, a simple `yarn start` or  `npm start` command for both the backend and frontend should suffice.
-- Whilst we absolutely rely on great test coverage within our platform it is not a requirement for this challenge.
+    - Showcase just the **frontend** by mocking backend calls.
+    - Showcase just the **backend** with tests or Swagger documentation.
+- We value **modern workflows**, so feel free to use **AI tools**, but be ready to discuss your solution.
+- We value your time. we're interested in **code quality and design decisions** not completeness of the AC's.
+  - Limit yourself to ~4 hours.
+  - You can add comments where and how you'd expand given more time.
+- **TypeScript** is essential to our platform — we encourage you to showcase its use.
+- Your code should **compile and run easily**.
+  - A simple `yarn start` (or `npm start`) for frontend and backend is preferred.
+- While testing is key in our platform, it’s **not a requirement for this challenge**.
 
 ### 🎨 Frontend Acceptance Criteria (ACs)
 
