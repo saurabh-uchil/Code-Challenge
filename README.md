@@ -65,5 +65,5 @@ Build out a simple Node.js API.
 
 You may either:
 
-- Create a branch and submit a PR to the provided repository, **or**
+- Create a branch, add your code to the `codebase` folder and submit a PR to the provided repository, **or**
 - Present your codebase during the next technical interview on your local machine.
