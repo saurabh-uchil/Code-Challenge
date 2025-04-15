@@ -63,7 +63,8 @@ Build out a simple Node.js API.
 
 ### 🚀 Presenting your code
 
-You may either:
+Add your code to the `codebase` folder.
 
-- Create a branch, add your code to the `codebase` folder and submit a PR to the provided repository, **or**
-- Present your codebase during the next technical interview on your local machine.
+2 Options to submit your code:
+- Fork this repository and share the repository link with us.
+- Email a zipped copy of your code to Nina Ryu. 
