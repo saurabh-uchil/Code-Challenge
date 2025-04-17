@@ -18,7 +18,8 @@ Build a React + Node.js application that renders a customer's energy accounts an
 
 ### 🎨 Frontend Acceptance Criteria (ACs)
 
-Build a single react page that renders a list of a customers energy accounts.
+Build a react app to display energy data and make payments.
+- ✅ Implement a page that renders a list of customer energy accounts.
 - ✅ Fetch energy accounts from the backend.
 - ✅ The accounts should be rendered in a Card UI format stacked on top of each other and centered on the page.
 - ✅ The account balance should change color based on the value:
@@ -32,6 +33,7 @@ Build a single react page that renders a list of a customers energy accounts.
     - balance
     - A "Pay" button
 - ✅ Clicking the "Pay" button should submit the credit card details to the backend, and on success, show a “Payment Successful” view with a close button.
+- ✅ Implement a different page/view that shows a history of payments made.
 
 Example card:<br/>
 <img src="./example-ui/example-card.png" alt="card-example" width="640"/>
@@ -43,9 +45,11 @@ Example payment modal<br/>
 ### Backend Acceptance Criteria (ACs)
 
 Build out a simple Node.js API.
-- ✅ Implement an endpoint to fetch energy accounts
+- ✅ Implement an endpoint to fetch energy accounts which internally calls the energy accounts API and the due charges API.
+- ✅ The api response should calculate the balance for each account by adding up the due charges for each account.
+- ✅ Add types where required.
 - ✅ Implement an endpoint to process a credit card payment.
-- ✅ Mock downstream data sources for energy accounts + credit card processor. See: [Example mocks](./example-mocks/api-example.ts)
+- ✅ Mock downstream data sources for energy accounts + credit card processor. See: [Example mocks](./example-mocks/energyAccountsAPIMock.ts)
 
 
 ### 💎 What We Value
