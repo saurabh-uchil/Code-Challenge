@@ -34,6 +34,7 @@ Build a react app to display energy data and make payments.
     - A "Pay" button
 - ✅ Clicking the "Pay" button should submit the credit card details to the backend, and on success, show a “Payment Successful” view with a close button.
 - ✅ Implement a different page/view that shows a history of payments made.
+- ✅ Implement a search feature to search by account address.
 
 Example card:<br/>
 <img src="./example-ui/example-card.png" alt="card-example" width="640"/>
