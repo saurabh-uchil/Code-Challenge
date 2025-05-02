@@ -10,7 +10,7 @@ Build a React + Node.js application that renders a customer's energy accounts an
     - Showcase both.
 - We value **modern workflows**, so feel free to use **AI tools**, but be ready to discuss your solution.
 - We value your time. we're interested in **code quality and design decisions** not completeness of the AC's.
-  - Limit yourself to ~4 hours.
+  - Limit yourself to around 4 hours.
   - You can add comments where and how you'd expand given more time.
   - Pixel perfect UI or good UX design is not something we will be assessing.
 - **TypeScript** is essential to our platform — we encourage you to showcase its use.
