@@ -1,0 +1,62 @@
+.my-modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    max-width: 90%;
+    font-weight: 600;
+}
+
+.my-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(128, 128, 128, 0.75);
+    z-index: 1000;
+}
+.ModalHeader{
+    display: flex;
+    justify-content: space-between;
+}
+.icon{
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.my-modal input{
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.cardExpiry{
+    display: flex;
+    justify-content: space-between;
+}
+.cardExpiry input{
+    width: 45%;
+    margin-block: 10px;
+    text-align: center;
+}
+.pay{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 10px;
+}
+.pay button{
+    width: 100px;
+}
+
+.message{
+    margin-top: 15px;
+}

@@ -1,0 +1,68 @@
+.accountsCard{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-block: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid rgb(48, 46, 46);
+    border-radius: 5px;
+}
+
+img{
+    width: 150px;
+    height: 150px;
+    border: 2px solid rgb(48, 46, 46);
+    border-radius: 50%;
+}
+
+.details{
+    width: 60%;
+    font-weight: 600;
+    margin-left: 50px;
+}
+
+@media only screen and (max-width: 767px) {
+    .accountsCard{
+        width: 100%;
+        display: block;
+    }
+    .details{
+        width: auto;
+        margin-block: 20px;
+        margin-inline: 10px;
+    }
+    .details .button{
+        text-align: center;
+    }
+    .imgDiv{
+        text-align: center;
+    }
+    img{
+        width: 100px;
+        height: 100px
+    }
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 852px)  {
+    .accountsCard{
+        width: 80%;
+    }.imgDiv{
+        width: 40%
+    }
+    .details{
+        width: 60%;
+    }
+    img{
+        width: 100px;
+        height: 100px;
+    }
+}  
+
+@media only screen and (min-width: 853px) {
+    .accountsCard{
+        width: 80%;
+    }
+}
