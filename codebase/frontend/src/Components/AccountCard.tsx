@@ -9,13 +9,19 @@ type Props  = {
 }
 
 export const Account:FunctionComponent<Props> =  (props:Props) : ReactElement =>{
+    
+    //Props
     const {id, type, address, dueAmount} = props.account;
+    
+    //Local State
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
+    //Toggle Modal
     const toggleModal = ()=>{
         setModalIsOpen(modalIsOpen => !modalIsOpen)
     }
     
+    //Color of Balance Amount
     let amount;
     if(dueAmount > 0){
         amount = <p> Account Balance: <span className="text-success" >{dueAmount}$</span></p>

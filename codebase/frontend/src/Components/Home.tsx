@@ -16,14 +16,19 @@ type Props = {
 
 export const Home: FunctionComponent<Props> = (props:Props):ReactElement =>{
     
+    //Environmetn Variables
     const {VITE_PORT,VITE_ACCOUNTS_URL} = import.meta.env;
     
-    //const [accounts, setAccounts] = useState<AccountDetails[]>([]);
+    //Local State
     const [filter, setFilter] = useState<string>('');
+    const [address, setAddress] = useState<string>('');
+
+    //Custom Hook
     const [isLoading, error, callApi] = useApiHook();
     
     const dispatch = useDispatch();
 
+    //Getting Accounts from Redux store
     const accounts = useSelector((state:RootState)=> state.accounts);
     
     useEffect(()=>{
@@ -31,8 +36,6 @@ export const Home: FunctionComponent<Props> = (props:Props):ReactElement =>{
             try{
                 const accountURL = "http://localhost:"+VITE_PORT+VITE_ACCOUNTS_URL;
                 const data = await callApi(accountURL);
-                //console.log("Data "+data);
-                //setAccounts(data)
 
                 dispatch(setAccounts(data));
 
@@ -49,6 +52,7 @@ export const Home: FunctionComponent<Props> = (props:Props):ReactElement =>{
         fetchData();
     }, []);
     
+    //Filter By Type
     let data;
     if(filter !=""){
         data = accounts.filter((account)=> account.type === filter);
@@ -56,22 +60,39 @@ export const Home: FunctionComponent<Props> = (props:Props):ReactElement =>{
         data = accounts;
     }
 
-    const account = data.map((account, i)=>{
+    //Search By Address
+    const searchAddress = data.filter((account)=> account.address.includes(address));
+    
+    //Final Results
+    const account = searchAddress.map((account, i)=>{
         return <div key={i}>
             <Account account={account} />
         </div>
     })
 
+    //On Select
     const handleChange = (e : React.ChangeEvent<HTMLSelectElement>)=>{
         setFilter(e.target.value);
     }
 
+    //On Search
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) =>{
+        console.log(e.target.value);
+        setAddress(e.target.value);
+    }
+
     let results;
+
+    //Loading accounts
     if(isLoading){
-        results = <Loader message={loadAccountsMessage}/>
-    }else if(error!=''){
+        results = <Loader message={loadAccountsMessage}/> 
+    }
+    //On Error
+    else if(error!=''){
         results = <div className="error">{error}</div>
-    }else{
+    }
+    //Results
+    else{
         results = <div>{account}</div>
     }
 
@@ -80,13 +101,21 @@ export const Home: FunctionComponent<Props> = (props:Props):ReactElement =>{
         
         <p className="intro">{props.intro}</p>    
         
+
+
         <div className="searchFilter">
-            <label>Filter By</label> 
-            <select onChange={handleChange}>
-                <option value={""}>SHOW ALL</option>
-                <option value={"ELECTRICITY"}>ELECTRICITY</option>
-                <option value={"GAS"}>GAS</option>
+            <div className="addressSearch">
+                <input type="text"  placeholder="Search By Address" onChange={handleSearch} value={address}/>
+            </div>
+            
+            <div>
+                <label>Filter By</label> 
+                <select onChange={handleChange}>
+                    <option value={""}>SHOW ALL</option>
+                    <option value={"ELECTRICITY"}>ELECTRICITY</option>
+                    <option value={"GAS"}>GAS</option>
             </select>
+            </div>            
         </div>
 
         <div className="accountsDiv">

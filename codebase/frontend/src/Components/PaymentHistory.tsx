@@ -16,6 +16,7 @@ export const PaymentHistory: FunctionComponent<Props> = (props:Props) : ReactEle
         return <PaymentCard payment={payment} key={i} />
     })
 
+    //Payment History
     let records;
     if(history.length === 0){
         records = <div className="text-center prevRecord">There is no previous payment history</div>
