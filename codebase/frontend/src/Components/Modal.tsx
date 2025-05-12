@@ -19,7 +19,10 @@ type Props = {
 }
 export const ModalElement : FunctionComponent<Props> = (props:Props): ReactElement =>{
 
+    //Environment Variables
     const {VITE_PORT,VITE_PAYMENTS_URL} = import.meta.env;
+
+    //Local State
     const [formData, setFormData] = useState({amount: 0, cardNumber: '', expiry:'', cvv: ''});
     const [paymentSuccess, setPaymentSuccess] = useState(false);
     const [paymentStatus, setPaymentStatus] = useState('');
@@ -34,6 +37,7 @@ export const ModalElement : FunctionComponent<Props> = (props:Props): ReactEleme
         }
       }, [props.isOpen]);
     
+    //Clicking on Payment
     const handlePayment = async () =>{
         try{
             const paymentURL = "http://localhost:"+VITE_PORT+VITE_PAYMENTS_URL;
@@ -41,13 +45,20 @@ export const ModalElement : FunctionComponent<Props> = (props:Props): ReactEleme
             const response = await axios.post(paymentURL, payload);       
             
             if(response.status === 200){
+                //Store data to redux store
                 dispatch(addPaymentHistory({id: props.account.id, amount: payload.amount, date: format(new Date(), 'dd/MM/yy')}))
+                
+                //Set Status
                 setPaymentSuccess(true);
                 setPaymentStatus(response.data.message);
+
+                //Clear Form Data
                 setFormData({amount: 0, cardNumber: '', expiry:'', cvv: ''});
             }
         }
         catch(err){
+
+            //Catch Errors
             let message; 
             if (axios.isAxiosError(err)) {
                 message = err.response?.data?.message || err.message;
@@ -60,12 +71,14 @@ export const ModalElement : FunctionComponent<Props> = (props:Props): ReactEleme
         }
     }
 
+    //Setting Form Data on change of value
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
         setFormData({...formData, [e.target.id]:e.target.value});
     }
 
     let paymentMessage;
     
+    //Payment Status Message
     if(paymentSuccess){
         paymentMessage = <p className="text-success text-center message">{paymentStatus}</p>
     }
@@ -95,6 +108,7 @@ export const ModalElement : FunctionComponent<Props> = (props:Props): ReactEleme
                         <input type="password" placeholder="CVV" id="cvv" value={formData.cvv} onChange={handleChange}/>
                     </div>
                 </div>
+                
                 <div className="pay">
                     <button onClick={handlePayment} className="btn btn-danger">Pay</button>
                 </div>

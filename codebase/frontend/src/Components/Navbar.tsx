@@ -5,10 +5,6 @@ import "../CSS/Navbar.css";
 export const Navbar: FunctionComponent = ():ReactElement =>{
     return(
         <>
-       {/*  <nav>
-            <NavLink to={"/"}>Home</NavLink>
-            <NavLink to={"/paymentHistory"}>Payment History</NavLink>
-        </nav> */}
         <nav className="navbar navbar-expand-lg navbar-dark bg-success custom-navbar">
             <h4 className="navbar-brand" >Origin</h4>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
