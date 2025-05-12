@@ -1,6 +1,6 @@
 import { useState, type FunctionComponent, type ReactElement } from "react";
 import { ModalElement } from "./Modal";
-import type { AccountDetails } from "../Type/Account";
+import type { AccountDetails } from "../Type/Types";
 import "../CSS/Accounts.css";
 import icon from "../assets/icon.png";
 

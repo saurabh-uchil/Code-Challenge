@@ -1,11 +1,14 @@
 import { useEffect, useState, type FunctionComponent, type ReactElement } from "react"
 import { Account } from "./AccountCard";
-import type { AccountDetails } from "../Type/Account";
+/* import type { AccountDetails } from "../Type/Account"; */
 import { useApiHook } from "../Hook/ApiHook";
 import "../CSS/Home.css";
 import { Loader } from "./Loader";
 import { loadAccountsMessage } from "../Data/Intro";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setAccounts, type RootState } from "../Store/store";
+import { useSelector } from "react-redux";
 
 type Props = {
     intro : string;
@@ -13,23 +16,26 @@ type Props = {
 
 export const Home: FunctionComponent<Props> = (props:Props):ReactElement =>{
     
-    const {VITE_PORT,VITE_ACCOUNTS_URL, VITE_PAYMENTS_URL} = import.meta.env;
+    const {VITE_PORT,VITE_ACCOUNTS_URL} = import.meta.env;
     
-    const [accounts, setAccounts] = useState<AccountDetails[]>([]);
+    //const [accounts, setAccounts] = useState<AccountDetails[]>([]);
     const [filter, setFilter] = useState<string>('');
-   /*  const [isLoading, setIsLoading] = useState<boolean>(false); */
     const [isLoading, error, callApi] = useApiHook();
+    
+    const dispatch = useDispatch();
+
+    const accounts = useSelector((state:RootState)=> state.accounts);
+    
     useEffect(()=>{
         const fetchData = async ()=>{
             try{
                 const accountURL = "http://localhost:"+VITE_PORT+VITE_ACCOUNTS_URL;
-                /* setIsLoading(true);
-                const {data} = await axios.get('http://localhost:3000/accounts');
-                setAccounts(data);
-                setIsLoading(false); */
                 const data = await callApi(accountURL);
                 //console.log("Data "+data);
-                setAccounts(data);
+                //setAccounts(data)
+
+                dispatch(setAccounts(data));
+
             }catch(err){
                 if(axios.isAxiosError(err)){
                     console.log("Axios Error");
@@ -42,7 +48,7 @@ export const Home: FunctionComponent<Props> = (props:Props):ReactElement =>{
         }
         fetchData();
     }, []);
-
+    
     let data;
     if(filter !=""){
         data = accounts.filter((account)=> account.type === filter);
@@ -68,12 +74,6 @@ export const Home: FunctionComponent<Props> = (props:Props):ReactElement =>{
     }else{
         results = <div>{account}</div>
     }
-
-   
-    
-    console.log("http://localhost:"+VITE_PORT+VITE_ACCOUNTS_URL);
-    console.log(VITE_ACCOUNTS_URL);
-    console.log(VITE_PAYMENTS_URL);
 
     return(
         <div className="home">

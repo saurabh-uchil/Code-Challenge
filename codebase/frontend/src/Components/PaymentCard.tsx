@@ -1,5 +1,5 @@
 import type { FunctionComponent, ReactElement } from "react";
-import type { Payment } from "../Type/Account";
+import type { Payment } from "../Type/Types";
 import '../CSS/PaymentCard.css';
 
 type Props = {

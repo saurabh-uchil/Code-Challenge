@@ -2,11 +2,11 @@ import axios from "axios";
 import {useEffect, useState, type FunctionComponent, type ReactElement } from "react";
 
 import Modal from 'react-modal';
-import type { AccountDetails } from "../Type/Account";
+import type { AccountDetails } from "../Type/Types";
 import { IoMdClose } from "react-icons/io";
 import "../CSS/Modal.css";
 import { useDispatch } from "react-redux";
-import { addPaymentHistory } from "../Store/Slice/PaymentHistorySlice";
+import { addPaymentHistory } from "../Store/store";
 import { format } from "date-fns";
 
 

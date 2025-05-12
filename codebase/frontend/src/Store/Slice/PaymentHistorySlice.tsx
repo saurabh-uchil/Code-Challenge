@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { Payment } from "../../Type/Account";
+import type { Payment } from "../../Type/Types";
 
 const initialState: Payment[] = [];
 
