@@ -2,7 +2,7 @@
 
 codebase/  
 ├── frontend/    # (React + Vite + TS app)  
-└── backend/     # (Node + Express + TS server)  
+└── backend/     # (Node + Express)  
 
 # Getting Started  
 # Frontend Setup  
@@ -36,8 +36,8 @@ PORT=YOURBACKENDPORT
 
 # Running the Applications
 
-cd codebase/frontend
+cd codebase/frontend  
 npm run dev
 
-cd codebase/backend
+cd codebase/backend  
 npm run dev
