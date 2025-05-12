@@ -3,7 +3,7 @@ import './App.css'
 import { Navbar } from './Components/Navbar'
 import { Home } from './Components/Home';
 import { PaymentHistory } from './Components/PaymentHistory';
-import { intro } from './Data/Intro';
+import { intro, paymentHistoryIntro } from './Data/Intro';
 
 function App() {
   
@@ -14,7 +14,7 @@ function App() {
          <div>
           <Routes>
           <Route path="/" element={<Home intro={intro}/>} />
-          <Route path="/paymentHistory" element={<PaymentHistory />} />
+          <Route path="/paymentHistory" element={<PaymentHistory intro={paymentHistoryIntro}/>} />
           </Routes>
          </div>
       </BrowserRouter>
