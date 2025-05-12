@@ -5,6 +5,9 @@ import Modal from 'react-modal';
 import type { AccountDetails } from "../Type/Account";
 import { IoMdClose } from "react-icons/io";
 import "../CSS/Modal.css";
+import { useDispatch } from "react-redux";
+import { addPaymentHistory } from "../Store/Slice/PaymentHistorySlice";
+import { format } from "date-fns";
 
 
 Modal.setAppElement('#root');
@@ -21,6 +24,8 @@ export const ModalElement : FunctionComponent<Props> = (props:Props): ReactEleme
     const [paymentSuccess, setPaymentSuccess] = useState(false);
     const [paymentStatus, setPaymentStatus] = useState('');
 
+    const dispatch = useDispatch();
+
     useEffect(() => {
         if (props.isOpen) {
           setPaymentSuccess(false);
@@ -34,11 +39,13 @@ export const ModalElement : FunctionComponent<Props> = (props:Props): ReactEleme
             const paymentURL = "http://localhost:"+VITE_PORT+VITE_PAYMENTS_URL;
             const payload = {...formData}
             const response = await axios.post(paymentURL, payload);       
+            
             if(response.status === 200){
+                dispatch(addPaymentHistory({id: props.account.id, amount: payload.amount, date: format(new Date(), 'dd/MM/yy')}))
                 setPaymentSuccess(true);
                 setPaymentStatus(response.data.message);
+                setFormData({amount: 0, cardNumber: '', expiry:'', cvv: ''});
             }
-            setFormData({amount: 0, cardNumber: '', expiry:'', cvv: ''});
         }
         catch(err){
             let message; 
