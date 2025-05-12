@@ -20,3 +20,5 @@ app.use('/payment', payment);
 app.listen(port, ()=>{
     console.log("App Listening on port: "+port);
 });
+
+export default app;
