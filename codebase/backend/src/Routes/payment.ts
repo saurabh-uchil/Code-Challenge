@@ -2,9 +2,9 @@ import express, { Request, Response } from 'express';
 const router = express.Router();
 
 
-router.get('/', async (req: Request ,res: Response)=>{
-    res.send("Welcome to payments...");
-});
+/* router.get('/', async (req: Request ,res: Response)=>{
+    res.json({message:"Welcome to payments..."});
+}); */
 
 router.post('/', (req: Request ,res: Response)=>{
     const {amount, cardNumber, expiry, cvv} = req.body;

@@ -49,4 +49,4 @@ const getFullAccountDetails = (dueCharges: DueCharges[], accounts: Account[]) =>
     return responseArray;
 }
 
-export {getFullAccountDetails}
+export {getFullAccountDetails, getArrayOfTotal, getArrayOfId}
